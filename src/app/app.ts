@@ -16,12 +16,12 @@ export class App {
     });
   }
 
-  // parent(event: Event) {
-  //   console.log('Parent clicked',event.target);
-  // }
+  parent(event: Event) {
+    console.log('Parent clicked',event.target);
+  }
 
-  // child(event: Event) {
-  //    event.stopPropagation();
-  //    console.log('child clicked',event.target);
-  // }
+  child(event: Event) {
+     event.stopPropagation();
+     console.log('child clicked',event.target);
+  }
 }

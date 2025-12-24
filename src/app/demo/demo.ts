@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { ModalService } from '../modal.service';
+import { Component, inject, input, OnInit } from '@angular/core';
+import { ModalService , DataType} from '../modal.service';
 
 @Component({
   selector: 'app-demo',
@@ -7,14 +7,14 @@ import { ModalService } from '../modal.service';
   templateUrl: './demo.html',
   styleUrl: './demo.scss',
 })
-export class Demo {
+export class Demo implements OnInit {
+  modalId = input<string>();
+  modalData = input<DataType>();
   private modalService = inject(ModalService);
-  consturctor() {
-    this.modalService.getData().subscribe((data) => {
-      console.log('Received modal data:', data);
-    });
+  ngOnInit() {
+   console.log('Modal Data:', this.modalData());
   }
   close() {
-    this.modalService.closeModal({ closed: true });
+    this.modalService.closeLatestModal({test:'test'})
   }
 }
